@@ -13,11 +13,13 @@ export const ProfileInfo = () => {
 		<div className="w-full rounded-sm pt-1 shadow-lg">
 			{Object.entries(userInfo).map(([key, value]) => (
 				<>
-					{value && (
+					{value || value === 0 ? (
 						<div key={key} className="flex justify-between px-1 py-3">
 							<span>{key}</span>
 							<span>{value}</span>
 						</div>
+					) : (
+						''
 					)}
 				</>
 			))}
