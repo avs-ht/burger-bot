@@ -5,8 +5,12 @@
 @import 'reset.css';
 @import 'vars.scss';
 
+body {
+	background-color: var(--tg-theme-bg-color);
+	color: var(--tg-theme-text-color);
+}
 .container {
-	max-width: var(--container-width);
-	padding: 0 var(--container-padding);
 	margin: 0 auto;
+	padding: 0 var(--container-padding);
+	max-width: var(--container-width);
 }
