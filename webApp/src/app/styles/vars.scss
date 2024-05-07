@@ -1,0 +1,16 @@
+@property --container-width {
+	syntax: '<length-percentage>';
+	inherits: false;
+	initial-value: 100%;
+}
+
+@property --container-padding {
+	syntax: '<length>';
+	inherits: false;
+	initial-value: 0px;
+}
+
+:root {
+	--container-width: 1400px;
+	--container-padding: 20px;
+}
