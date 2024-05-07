@@ -10,11 +10,11 @@ export const ProfileInfo = () => {
 	};
 
 	return (
-		<div className="rounded-sm">
+		<div className="w-full rounded-sm pt-1 shadow-lg">
 			{Object.entries(userInfo).map(([key, value]) => (
 				<>
 					{value && (
-						<div key={key} className="flex justify-between">
+						<div key={key} className="flex justify-between px-1 py-3">
 							<span>{key}</span>
 							<span>{value}</span>
 						</div>
