@@ -2,7 +2,6 @@ import { useTg } from '$/shared/lib/useTg';
 
 export const ProfileInfo = () => {
 	const { user, tg } = useTg();
-	console.log(tg.themeParams);
 
 	const userInfo = {
 		Имя: user?.first_name || user?.username,
@@ -27,6 +26,7 @@ export const ProfileInfo = () => {
 					)}
 				</>
 			))}
+			{tg.themeParams.bg_color}
 		</div>
 	);
 };
