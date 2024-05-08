@@ -14,6 +14,9 @@ export const InfoBlock = ({
 				styles.infoBlock,
 			)}
 		>
+			{document.body.style.getPropertyValue('--tg-theme-bg-color-h')}
+			{document.body.style.getPropertyValue('--tg-theme-bg-color-s')}
+			{document.body.style.getPropertyValue('--tg-theme-bg-color-l')}
 			{Object.entries(info).map(([key, value], index) => (
 				<>
 					{value || value === 0 || !value ? (
