@@ -22,7 +22,7 @@ export const App = () => {
 		const [h, s, l] = convert.hex.hsl(tg.themeParams.bg_color || '');
 		document.body.style.setProperty('--tg-theme-bg-color-h', `${h}`);
 		document.body.style.setProperty('--tg-theme-bg-color-s', `${s}%`);
-		document.body.style.setProperty('--tg-theme-bg-color-l', `${l}%`);
+		document.body.style.setProperty('--tg-theme-bg-color-l', `${l + 10}%`);
 	});
 
 	return <RouterProvider router={router} />;
