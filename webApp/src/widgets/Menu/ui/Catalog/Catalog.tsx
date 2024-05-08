@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import { useContext, useEffect, useRef } from 'react';
+import { InView } from 'react-intersection-observer';
 
 import { CatalogContext } from '../../model/CatalogContext';
 
@@ -25,6 +26,7 @@ export const Catalog = () => {
 		});
 		isCatalogChanged.current = false;
 	}, [currCatalog]);
+
 	return (
 		<OverlayScrollbarsComponent className="fixed left-0 top-0 z-50 w-full">
 			<ul
@@ -37,7 +39,7 @@ export const Catalog = () => {
 					const [catalogName, htmlId] = catalog;
 					const isCurrCatalog = htmlId === currCatalog;
 					return (
-						<li
+						<InView
 							key={htmlId}
 							className={clsx('whitespace-nowrap rounded-2xl px-3 py-2', {
 								[activeItemClass]: isCurrCatalog,
@@ -53,7 +55,7 @@ export const Catalog = () => {
 							>
 								{catalogName}
 							</button>
-						</li>
+						</InView>
 					);
 				})}
 			</ul>

@@ -16,17 +16,18 @@ export const MenuPositionItem = ({
 				src={menuPosition.image}
 				alt={menuPosition.description}
 			/>
-			<div className="p-3">
+			<div className="p-3 pb-0">
 				<h4 className="mb-3 font-bold">
 					{menuPosition.title.length > 30
 						? menuPosition.title.slice(0, 27) + '...'
 						: menuPosition.title}
 				</h4>
-				<p>
+				<p className="mb-3">
 					{menuPosition.description?.length || 0 > 40
 						? menuPosition.description?.slice(0, 37) + '...'
 						: menuPosition.description}
 				</p>
+				<button className="w-full rounded-xl bg-app-green py-3 text-white">{`${(+menuPosition.price).toFixed(0)} ₽`}</button>
 			</div>
 		</div>
 	);
