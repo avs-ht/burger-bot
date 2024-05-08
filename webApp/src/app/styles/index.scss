@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@import 'reset.css';
-@import 'vars.scss';
+@import './reset.css';
+@import './vars.scss';
 
 body {
 	background-color: var(--tg-theme-bg-color);
