@@ -1,5 +1,6 @@
-import { useInView } from 'react-intersection-observer';
+import { useContext, useEffect, useRef } from 'react';
 
+import { CatalogContext } from '../../model/CatalogContext';
 import { MenuPosition } from '../../model/MenuPosition';
 
 import { MenuPositionItem } from './MenuPositionItem';
@@ -13,21 +14,46 @@ interface Props {
 
 export const MenuContentItem = ({
 	title,
+	id,
 	dsecription,
 	menuPositions,
 }: Props) => {
-	const { ref, inView } = useInView({
-		/* Optional options */
-		threshold: 0,
-	});
-	if (inView) {
-		console.log(1);
-	}
+	const { setCurrCatalog, currCatalog } = useContext(CatalogContext);
+
+	const ref = useRef(null);
+	useEffect(() => {
+		const observer = new IntersectionObserver(
+			entries => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						if (document.body.getAttribute('isMovingToCatalog') === 'true') {
+							if (id === currCatalog)
+								document.body.setAttribute('isMovingToCatalog', 'false');
+							return;
+						}
+						setCurrCatalog(id);
+					}
+				});
+			},
+			{
+				rootMargin: '',
+				threshold: 0,
+			},
+		);
+		if (ref.current) observer.observe(ref.current);
+
+		return () => {
+			// eslint-disable-next-line react-hooks/exhaustive-deps
+			if (ref.current) observer.unobserve(ref.current);
+		};
+	}, [currCatalog, id, setCurrCatalog]);
 	return (
-		<div className="">
-			<h3 ref={ref}>{title}</h3>
-			<p>{dsecription}</p>
-			<div className="">
+		<div className="relative">
+			<i id={id} className="absolute left-0 top-[-60px] h-0 w-0" ref={ref}></i>
+
+			<h3 className="mb-5 text-2xl font-bold">{title}</h3>
+			<p className="mb-4">{dsecription}</p>
+			<div className="mini:grid-cols-2 grid gap-5">
 				{menuPositions.map(menuPosition => (
 					<MenuPositionItem key={menuPosition.id} menuPosition={menuPosition} />
 				))}

@@ -6,6 +6,9 @@ export default {
 			colors: {
 				'app-green': '#4F9C56',
 			},
+			screens: {
+				mini: '380px',
+			},
 		},
 	},
 	plugins: [],

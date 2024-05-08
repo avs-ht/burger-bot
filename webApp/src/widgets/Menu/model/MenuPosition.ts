@@ -3,7 +3,7 @@ export interface MenuPosition {
 	title: string;
 	id: string;
 	description?: string;
-	price: number;
+	price: number | string;
 	isSpicy?: boolean;
 	isChefChoice?: boolean;
 	isMonthDish?: boolean;

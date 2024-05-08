@@ -1,5 +1,6 @@
 .container {
 	border-bottom: 1px solid var(--info-block-divider-color);
+	background-color: var(--info-block-bg-color);
 	&::-webkit-scrollbar {
 		display: none;
 	}
