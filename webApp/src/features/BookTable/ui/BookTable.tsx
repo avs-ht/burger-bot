@@ -25,9 +25,16 @@ export const BookTable = () => {
 		register,
 		clearErrors: clearError,
 		formState: { errors },
+		trigger,
 	} = useForm<FormType>();
+
+	tg.MainButton.onClick(() => {
+		trigger();
+		if (errors) return;
+		else tg.sendData(JSON.stringify({ errors }));
+	});
 	return (
-		<div className="">
+		<div className="flex flex-col gap-3">
 			<Input
 				label="Время визита"
 				register={register('visitTime')}
@@ -40,7 +47,7 @@ export const BookTable = () => {
 				clearError={() => clearError('visitDate')}
 				errorText={errors.visitDate?.message}
 			/>
-			<div className="mb-3 mt-7 flex flex-col items-center gap-3">
+			<div className="mt-4 flex flex-col items-center gap-3">
 				<h2 className="text-white">Схема зала и расстановка столов</h2>
 				<img
 					className="w-full max-w-[420px]"
