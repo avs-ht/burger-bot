@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import { useContext } from 'react';
 
 import { CatalogContext } from '../model/CatalogContext';
@@ -15,33 +16,35 @@ export const Catalog = () => {
 	const { currCatalog, setCurrCatalog } = useContext(CatalogContext);
 	const activeItemClass = 'bg-app-green text-white';
 	return (
-		<ul
-			className={clsx(
-				'flex w-full gap-5 overflow-auto px-1 py-3',
-				styles.container,
-			)}
-		>
-			{Object.entries(CATALOG).map(catalog => {
-				const [catalogName, htmlId] = catalog;
-				const isCurrCatalog = htmlId === currCatalog;
-				return (
-					<li
-						key={htmlId}
-						className={clsx('whitespace-nowrap rounded-2xl px-3 py-2', {
-							[activeItemClass]: isCurrCatalog,
-						})}
-					>
-						<button
-							disabled={isCurrCatalog}
-							onClick={() => {
-								console.log(setCurrCatalog(htmlId));
-							}}
+		<OverlayScrollbarsComponent>
+			<ul
+				className={clsx(
+					'flex w-full gap-5 overflow-auto px-1 py-3',
+					styles.container,
+				)}
+			>
+				{Object.entries(CATALOG).map(catalog => {
+					const [catalogName, htmlId] = catalog;
+					const isCurrCatalog = htmlId === currCatalog;
+					return (
+						<li
+							key={htmlId}
+							className={clsx('whitespace-nowrap rounded-2xl px-3 py-2', {
+								[activeItemClass]: isCurrCatalog,
+							})}
 						>
-							{catalogName}
-						</button>
-					</li>
-				);
-			})}
-		</ul>
+							<button
+								disabled={isCurrCatalog}
+								onClick={() => {
+									console.log(setCurrCatalog(htmlId));
+								}}
+							>
+								{catalogName}
+							</button>
+						</li>
+					);
+				})}
+			</ul>
+		</OverlayScrollbarsComponent>
 	);
 };
