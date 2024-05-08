@@ -6,7 +6,11 @@
 @import './vars.scss';
 
 body {
-	background-color: var(--tg-theme-bg-color);
+	background-color: hsl(
+		var(--tg-theme-bg-color-h),
+		var(--tg-theme-bg-color-s),
+		calc(var(--tg-theme-bg-color-l) - 20%)
+	);
 	color: var(--tg-theme-text-color);
 }
 .container {

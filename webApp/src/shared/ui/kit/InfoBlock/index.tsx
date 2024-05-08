@@ -10,7 +10,7 @@ interface Props {
 export const InfoBlock = ({ info, title = '', valueColor = 'blue' }: Props) => {
 	return (
 		<>
-			{title && <h2 className="mb-2 px-2">{title}</h2>}
+			{title && <h2 className="mb-2 px-2 font-bold">{title}</h2>}
 			<div
 				className={clsx(
 					'w-full overflow-hidden rounded-lg p-2 py-1',
