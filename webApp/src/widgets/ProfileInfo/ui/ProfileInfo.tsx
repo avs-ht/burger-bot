@@ -16,7 +16,7 @@ export const ProfileInfo = () => {
 					{value || value === 0 ? (
 						<div key={key} className="flex justify-between px-1 py-3">
 							<span>{key}</span>
-							<span>{value}</span>
+							<span className="font-bold">{value}</span>
 						</div>
 					) : (
 						''
