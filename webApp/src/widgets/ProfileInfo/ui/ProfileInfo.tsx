@@ -11,7 +11,7 @@ export const ProfileInfo = () => {
 	};
 
 	return (
-		<div className="w-full rounded-lg p-2 shadow-[0_0_35px_0_rgba(0,0,0,0.75)]">
+		<div className="w-full rounded-lg p-2 shadow-[0_0_15px_0_rgba(0,0,0,0.75)]">
 			{Object.entries(userInfo).map(([key, value], index) => (
 				<>
 					{value || value === 0 || !value ? (
