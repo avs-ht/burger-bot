@@ -12,16 +12,21 @@ import {
 
 export const Map = () => {
 	return (
-		<YMaps>
-			<YMap defaultState={{ center: [55.751574, 37.573856], zoom: 9 }}>
-				<FullscreenControl />
-				<GeolocationControl />
-				<SearchControl options={{ float: 'left' }} />
-				<TrafficControl />
-				<TypeSelector />
-				<ZoomControl />
-				<RulerControl />
-			</YMap>
-		</YMaps>
+		<div className="mb-5">
+			<YMaps>
+				<YMap
+					className="aspect-square w-full max-w-[420px]"
+					defaultState={{ center: [55.751574, 37.573856], zoom: 9 }}
+				>
+					<FullscreenControl />
+					<GeolocationControl />
+					<SearchControl options={{ float: 'left' }} />
+					<TrafficControl />
+					<TypeSelector />
+					<ZoomControl />
+					<RulerControl />
+				</YMap>
+			</YMaps>
+		</div>
 	);
 };
