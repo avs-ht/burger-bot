@@ -21,9 +21,8 @@ export const App = () => {
 		tg.ready();
 		const [h, s, l] = convert.hex.hsl(tg.themeParams.bg_color || '');
 		document.body.style.setProperty('--tg-theme-bg-color-h', `${h}`);
-		document.body.style.setProperty('--tg-theme-bg-color-s', `${s}`);
-		document.body.style.setProperty('--tg-theme-bg-color-l', `${l}`);
-		console.log(h, s, l);
+		document.body.style.setProperty('--tg-theme-bg-color-s', `${s}%`);
+		document.body.style.setProperty('--tg-theme-bg-color-l', `${l}%`);
 	});
 
 	return <RouterProvider router={router} />;
