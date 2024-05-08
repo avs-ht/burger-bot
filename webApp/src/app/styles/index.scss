@@ -9,7 +9,7 @@ body {
 	background-color: hsl(
 		var(--tg-theme-bg-color-h),
 		var(--tg-theme-bg-color-s),
-		calc(var(--tg-theme-bg-color-l) - 20%)
+		calc(var(--tg-theme-bg-color-l) - 3%)
 	);
 	color: var(--tg-theme-text-color);
 }
