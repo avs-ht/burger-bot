@@ -16,7 +16,9 @@ type FormType = z.infer<typeof FormSchema>;
 
 export const BookTable = () => {
 	const { tg } = useTg();
-	tg.MainButton.text = 'Забронировать стол';
+	tg.MainButton.setParams({
+		text: 'Забронировать стол',
+	});
 	tg.MainButton.show();
 
 	const {
