@@ -10,7 +10,9 @@ interface Props {
 export const InfoBlock = ({ info, title = '', valueColor = 'blue' }: Props) => {
 	return (
 		<>
-			{title && <h2 className="mb-2 px-2 font-bold">{title}</h2>}
+			{title && (
+				<h2 className={clsx('mb-2 px-2 font-bold', styles.title)}>{title}</h2>
+			)}
 
 			<div
 				className={clsx(
@@ -22,8 +24,9 @@ export const InfoBlock = ({ info, title = '', valueColor = 'blue' }: Props) => {
 					<>
 						{value || value === 0 || !value ? (
 							<div
+								data-item
 								key={index}
-								className="relative flex justify-between px-1 py-3 after:absolute after:bottom-0 after:left-[-100px] after:block after:h-[1px] after:min-w-[1000vw] after:bg-[#E7E7E7] after:content-[''] last:after:hidden"
+								className="relative flex justify-between px-1 py-3 after:absolute after:bottom-0 after:left-[-100px] after:block after:h-[1px] after:min-w-[1000vw] after:content-[''] last:after:hidden"
 							>
 								<span>{key}</span>
 								<span

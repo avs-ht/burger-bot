@@ -3,7 +3,6 @@ import {
 	createHashHistory,
 	createRouter,
 } from '@tanstack/react-router';
-import convert from 'color-convert';
 import { useEffect } from 'react';
 
 import { routeTree } from './routeTree.gen';
@@ -16,18 +15,15 @@ declare module '@tanstack/react-router' {
 }
 
 const tg = window.Telegram.WebApp;
-const LIGHT_COEFF = 5;
 export const App = () => {
 	useEffect(() => {
 		tg.ready();
-		const [h, s, l] = convert.hex.hsl(tg.themeParams.bg_color || '');
-		document.body.style.setProperty('--tg-theme-bg-color-h', `${h}`);
-		document.body.style.setProperty('--tg-theme-bg-color-s', `${s}%`);
-		document.body.style.setProperty(
-			'--tg-theme-bg-color-l',
-			`${l + LIGHT_COEFF}%`,
-		);
-	});
+		if (tg.colorScheme === 'dark') {
+			document.body.setAttribute('data-theme', 'dark');
+		} else {
+			document.body.setAttribute('data-theme', 'light');
+		}
+	}, []);
 
 	return <RouterProvider router={router} />;
 };

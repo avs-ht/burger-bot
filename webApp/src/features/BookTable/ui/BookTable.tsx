@@ -35,7 +35,7 @@ export const BookTable = () => {
 	});
 	return (
 		<div className="flex flex-col gap-3">
-			<span className="text-red">{tg.platform}</span>
+			<span className="text-red">{tg.colorScheme}</span>
 			<Input
 				label="Время визита"
 				register={register('visitTime')}
