@@ -11,6 +11,7 @@ bot.onText(/\/start \d+|\/start/, (msg) => {
   const invitedBy = msg?.text?.split(" ")[1];
 
   const name = msg.from?.first_name || msg.from?.username || "гость";
+
   bot.sendMessage(
     chatId,
     `Привет ${name}! Мы рады тебя видеть в нашем заведении!`,

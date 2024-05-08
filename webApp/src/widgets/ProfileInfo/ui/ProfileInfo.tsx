@@ -15,7 +15,7 @@ export const ProfileInfo = () => {
 	return (
 		<div
 			className={clsx(
-				'w-full overflow-hidden rounded-lg p-2 shadow-[0_0_15px_0_rgba(0,0,0,0.75)]',
+				'w-full overflow-hidden rounded-lg p-2 py-1 shadow-[0_0_15px_0_rgba(0,0,0,0.75)]',
 				styles.profileInfo,
 			)}
 		>
