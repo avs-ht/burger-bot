@@ -13,6 +13,7 @@
 import { Route as rootRoute } from './app/routes/__root'
 import { Route as IndexImport } from './app/routes/index'
 import { Route as ProfileIndexImport } from './app/routes/profile/index'
+import { Route as ContactsIndexImport } from './app/routes/contacts/index'
 
 // Create/Update Routes
 
@@ -26,12 +27,21 @@ const ProfileIndexRoute = ProfileIndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const ContactsIndexRoute = ContactsIndexImport.update({
+  path: '/contacts/',
+  getParentRoute: () => rootRoute,
+} as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/': {
       preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/contacts/': {
+      preLoaderRoute: typeof ContactsIndexImport
       parentRoute: typeof rootRoute
     }
     '/profile/': {
@@ -43,6 +53,10 @@ declare module '@tanstack/react-router' {
 
 // Create and export the route tree
 
-export const routeTree = rootRoute.addChildren([IndexRoute, ProfileIndexRoute])
+export const routeTree = rootRoute.addChildren([
+  IndexRoute,
+  ContactsIndexRoute,
+  ProfileIndexRoute,
+])
 
 /* prettier-ignore-end */

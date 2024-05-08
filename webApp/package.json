@@ -11,6 +11,7 @@
 		"test": "vitest"
 	},
 	"dependencies": {
+		"@pbe/react-yandex-maps": "^1.2.5",
 		"@tanstack/react-router": "^1.31.19",
 		"@types/color-convert": "^2.0.3",
 		"clsx": "^2.1.1",

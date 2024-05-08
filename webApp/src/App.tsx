@@ -16,13 +16,17 @@ declare module '@tanstack/react-router' {
 }
 
 const tg = window.Telegram.WebApp;
+const LIGHT_COEFF = 5;
 export const App = () => {
 	useEffect(() => {
 		tg.ready();
 		const [h, s, l] = convert.hex.hsl(tg.themeParams.bg_color || '');
 		document.body.style.setProperty('--tg-theme-bg-color-h', `${h}`);
 		document.body.style.setProperty('--tg-theme-bg-color-s', `${s}%`);
-		document.body.style.setProperty('--tg-theme-bg-color-l', `${l + 10}%`);
+		document.body.style.setProperty(
+			'--tg-theme-bg-color-l',
+			`${l + LIGHT_COEFF}%`,
+		);
 	});
 
 	return <RouterProvider router={router} />;
