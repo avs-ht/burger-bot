@@ -3,22 +3,12 @@
 	flex-direction: column;
 
 	.input {
-		border: 1px solid var(--lightgray-color);
 		border-radius: 12px;
-		background-color: #fff;
+		background-color: white;
 		padding: 18.5px 16px;
 		width: 100%;
+		color: black;
 		font-weight: 500;
-		&:not(:disabled):hover {
-			border: 1px solid var(--green-color);
-		}
-		&:focus {
-			caret-color: var(--green-color);
-		}
-		&::placeholder {
-			color: #a9abad;
-			font-weight: normal;
-		}
 	}
 	.inputContainer {
 		position: relative;

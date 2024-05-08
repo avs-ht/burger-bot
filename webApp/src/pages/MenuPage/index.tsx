@@ -1,6 +1,5 @@
-import { useTg } from '$/shared/lib/useTg';
+import Menu from '$/widgets/Menu';
 
 export const MenuPage = () => {
-	const { closeApp } = useTg();
-	return <button onClick={closeApp}>закрыть</button>;
+	return <Menu />;
 };
