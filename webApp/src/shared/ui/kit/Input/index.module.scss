@@ -1,0 +1,56 @@
+.inputWrapper {
+	display: flex;
+	flex-direction: column;
+
+	.input {
+		border: 1px solid var(--lightgray-color);
+		border-radius: 12px;
+		background-color: #fff;
+		padding: 18.5px 16px;
+		width: 100%;
+		font-weight: 500;
+		&:not(:disabled):hover {
+			border: 1px solid var(--green-color);
+		}
+		&:focus {
+			caret-color: var(--green-color);
+		}
+		&::placeholder {
+			color: #a9abad;
+			font-weight: normal;
+		}
+	}
+	.inputContainer {
+		position: relative;
+		width: 100%;
+
+		.error {
+			display: block;
+			color: var(--negative-color);
+			font-size: 12px;
+			text-align: end;
+		}
+		&:has(.error) {
+			.input {
+				margin-bottom: 6px;
+				border-color: var(--negative-color);
+				background-color: var(--lightpink);
+				&::placeholder {
+					color: var(--negative-color);
+				}
+			}
+		}
+	}
+
+	.label {
+		margin-bottom: 8px;
+	}
+	&:has(input[data-disabled='true']) {
+		.label {
+			margin-bottom: 12px;
+		}
+		.input {
+			background-color: var(--whitesmoke-color);
+		}
+	}
+}

@@ -11,7 +11,7 @@ export const InfoBlock = ({ info, title = '', valueColor = 'blue' }: Props) => {
 	return (
 		<>
 			{title && <h2 className="mb-2 px-2 font-bold">{title}</h2>}
-			{document.body.style.getPropertyValue('--tg-theme-bg-color')}
+
 			<div
 				className={clsx(
 					'w-full overflow-hidden rounded-lg p-2 py-1',

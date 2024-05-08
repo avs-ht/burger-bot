@@ -7,7 +7,7 @@ export default (userId: number | undefined = 0) => {
       [{ text: "☺️ Профиль", web_app: { url: `${WEB_APP_URL}profile` } }],
       [
         {
-          text: "📋 Забронировать столик",
+          text: "📋 Забронировать стол",
           web_app: { url: `${WEB_APP_URL}book` },
         },
       ],
