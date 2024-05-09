@@ -51,9 +51,9 @@ export const MenuContentItem = ({
 		<div className="relative">
 			<i id={id} className="absolute left-0 top-[-60px] h-0 w-0" ref={ref}></i>
 
-			<h3 className="mb-5 text-2xl font-bold">{title}</h3>
-			<p className="mb-4 leading-5">{dsecription}</p>
-			<div className="mini:grid-cols-2 grid gap-5">
+			<h3 className="mb-5 text-xl font-bold">{title}</h3>
+			<p className="text-menu mb-4 text-sm leading-5">{dsecription}</p>
+			<div className="grid gap-5 mini:grid-cols-2">
 				{menuPositions.map(menuPosition => (
 					<MenuPositionItem key={menuPosition.id} menuPosition={menuPosition} />
 				))}
