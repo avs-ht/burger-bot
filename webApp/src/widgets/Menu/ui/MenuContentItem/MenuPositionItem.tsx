@@ -30,7 +30,7 @@ export const MenuPositionItem = ({
 	}, [price, tg.MainButton]);
 
 	useEffect(() => {
-		tg.MainButton.onClick(() => navigate({ to: '/' }));
+		tg.MainButton.onClick(() => navigate({ to: '/cart' }));
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 	return (
