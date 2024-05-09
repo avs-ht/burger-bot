@@ -12,7 +12,7 @@ export const updateUserStatus = async (
     },
   });
   await user?.update({
-    status,
+    privileged: status,
   });
   return true;
 };

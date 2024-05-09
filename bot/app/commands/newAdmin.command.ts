@@ -26,6 +26,7 @@ bot.onText(/\/cancelNewAdmin/, async (msg: any) => {
 });
 
 bot.on("message", async (msg: any) => {
+  if (msg.text === "/cancelNewAdmin" || msg.text === "/newAdmin") return;
   const chatId = String(msg.chat.id);
   const userStatus = await getUserStatus(chatId);
   if (userStatus !== "owner") return;
@@ -44,6 +45,7 @@ bot.on("message", async (msg: any) => {
   }
 
   await updateUserStatus(newAdmin, "admin");
+  await changeAdminState(chatId, "off");
   bot.sendMessage(
     chatId,
     `Пользователь ${newAdmin} добавлен как новый администратор`

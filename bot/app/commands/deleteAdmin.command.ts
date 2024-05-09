@@ -26,6 +26,7 @@ bot.onText(/\/cancelDeleteAdmin/, async (msg: any) => {
 });
 
 bot.on("message", async (msg: any) => {
+  if (msg.text === "/cancelDeleteAdmin") return;
   const chatId = String(msg.chat.id);
   const userStatus = await getUserStatus(chatId);
   if (userStatus !== "owner") return;
@@ -44,6 +45,7 @@ bot.on("message", async (msg: any) => {
   }
 
   await updateUserStatus(prevAdmin, "user");
+  await changeAdminState(chatId, "off");
   bot.sendMessage(
     chatId,
     `Пользователь ${prevAdmin} удален из списка администраторов`

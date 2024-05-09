@@ -12,7 +12,7 @@ export const changeAdminState = async (
     },
   });
   await user?.update({
-    status: state,
+    state: state,
   });
 
   return true;

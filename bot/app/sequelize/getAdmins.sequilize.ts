@@ -5,7 +5,7 @@ export const getAdmins = async () => {
   await db.sync();
   const admins = await userModel.findAll({
     where: {
-      status: "admin",
+      privileged: "admin",
     },
   });
   return admins.map((user) => user.get("login"));

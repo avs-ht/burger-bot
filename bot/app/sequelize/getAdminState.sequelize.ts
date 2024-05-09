@@ -9,5 +9,5 @@ export const getAdminState = async (login: string) => {
     },
   });
 
-  return admin?.get("status");
+  return admin?.get("state");
 };
