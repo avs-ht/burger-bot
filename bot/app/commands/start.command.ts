@@ -10,7 +10,7 @@ const handleStartCommand = async (msg) => {
   const chatId = String(msg.chat.id);
   const invitedBy = msg.text.split(" ")[1];
   try {
-    const answer = await saveUser(chatId, invitedBy);
+    const answer = await saveUser(chatId, invitedBy || "");
 
     const invitedUsers = await getUserInvitesAmount(chatId);
 
@@ -28,7 +28,28 @@ const handleStartCommand = async (msg) => {
         reply_markup: replyMarkup(chatId, invitedUsers || 0),
       }
     );
+
     setLastMessageBot(chatId, message.message_id.toString());
+
+    if (!answer.invitedBy) return;
+
+    const lastSenderBotMessage = await getLastMessageBot(answer.invitedBy);
+    if (!lastSenderBotMessage) return;
+
+    await bot.deleteMessage(answer.invitedBy, +lastSenderBotMessage);
+    await bot.sendMessage(
+      answer.invitedBy,
+      `${name} присоединился к нам по вашей ссылке! Спасибо!`
+    );
+    const senderInvitedUsers = await getUserInvitesAmount(answer.invitedBy);
+    const senderMessage = await bot.sendMessage(
+      answer.invitedBy,
+      "Мы рады тебя видеть в нашем заведении!",
+      {
+        reply_markup: replyMarkup(answer.invitedBy, senderInvitedUsers || 0),
+      }
+    );
+    setLastMessageBot(answer.invitedBy, senderMessage.message_id.toString());
   } catch (error) {
     console.log(error);
     bot.sendMessage(

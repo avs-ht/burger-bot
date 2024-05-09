@@ -26,10 +26,14 @@ export const saveUser = async (login: string, invitedBy?: string) => {
         invitedUsers: [...senderInvitedUsers, login],
       });
       return {
-        invitedBy: invitedBy,
+        invitedBy,
       };
     }
-    return null;
+    return {
+      invitedBy: null,
+    };
   }
-  return null;
+  return {
+    invitedBy: null,
+  };
 };

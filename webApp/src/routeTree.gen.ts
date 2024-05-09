@@ -12,6 +12,7 @@
 
 import { Route as rootRoute } from './app/routes/__root'
 import { Route as IndexImport } from './app/routes/index'
+import { Route as WalletIndexImport } from './app/routes/wallet/index'
 import { Route as PolicyIndexImport } from './app/routes/policy/index'
 import { Route as OrderIndexImport } from './app/routes/order/index'
 import { Route as ContactsIndexImport } from './app/routes/contacts/index'
@@ -23,6 +24,11 @@ import { Route as ProfileIdImport } from './app/routes/profile/$id'
 
 const IndexRoute = IndexImport.update({
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const WalletIndexRoute = WalletIndexImport.update({
+  path: '/wallet/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -88,6 +94,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PolicyIndexImport
       parentRoute: typeof rootRoute
     }
+    '/wallet/': {
+      preLoaderRoute: typeof WalletIndexImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -101,6 +111,7 @@ export const routeTree = rootRoute.addChildren([
   ContactsIndexRoute,
   OrderIndexRoute,
   PolicyIndexRoute,
+  WalletIndexRoute,
 ])
 
 /* prettier-ignore-end */

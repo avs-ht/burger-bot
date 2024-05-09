@@ -1,9 +1,9 @@
 import db from "../connections/db.connection";
 import userModel from "../models/user.model";
 
-export const changeAdminState = async (
+export const updateUserStatus = async (
   login: string,
-  state: "sendingMailing" | "off" | "newAdmin" | "deleteAdmin"
+  status: "user" | "admin"
 ) => {
   await db.sync();
   const user = await userModel.findOne({
@@ -12,8 +12,7 @@ export const changeAdminState = async (
     },
   });
   await user?.update({
-    status: state,
+    status,
   });
-
   return true;
 };

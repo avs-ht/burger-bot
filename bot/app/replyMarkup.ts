@@ -19,7 +19,7 @@ export default (userId: string, invitesAmount: number) => {
     [
       {
         text: "🎁 Мои бонусы",
-        url: "https://t.me/wallet?startattach",
+        web_app: { url: `${WEB_APP_URL}wallet` },
       },
     ],
     [

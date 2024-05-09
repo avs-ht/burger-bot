@@ -16,7 +16,7 @@ export default db.define(
       allowNull: false,
     },
     privileged: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.STRING,
       allowNull: true,
     },
     invitedUsers: {
@@ -29,6 +29,11 @@ export default db.define(
     },
     lastBotMessage: {
       type: DataTypes.STRING,
+      allowNull: true,
+    },
+    state: {
+      type: DataTypes.STRING,
+
       allowNull: true,
     },
   },
