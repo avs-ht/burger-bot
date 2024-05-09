@@ -49,18 +49,18 @@ export const MenuPositionItem = ({
 						onClick={() => addToCart(menuPosition.id)}
 					>{`${(+menuPosition.price).toFixed(0)} ₽`}</button>
 				) : (
-					<div className="flex max-h-[40px] items-center justify-between gap-5">
+					<div className="flex max-h-[40px] items-center justify-between gap-2">
 						<button
-							className="flex aspect-square h-full items-center justify-center rounded-xl text-xl leading-[1]"
+							className="flex aspect-square h-full w-full max-w-[30px] items-center justify-center rounded-xl text-xl leading-[1]"
 							onClick={() => deleteFromCart(menuPosition.id)}
 						>
 							-
 						</button>
-						<div className="flex h-[40px] flex-grow items-center justify-center rounded-xl bg-white text-black">
+						<div className="flex min-h-[30px] flex-grow items-center justify-center rounded-xl bg-white text-black">
 							{cart[menuPosition.id]}
 						</div>
 						<button
-							className="flex aspect-square h-full items-center justify-center rounded-xl leading-[1]"
+							className="flex aspect-square h-full w-full max-w-[30px] items-center justify-center rounded-xl leading-[1]"
 							onClick={() => addToCart(menuPosition.id)}
 						>
 							+
