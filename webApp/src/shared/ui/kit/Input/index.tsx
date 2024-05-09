@@ -9,10 +9,12 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 	register?: UseFormRegisterReturn<any>;
 	errorText?: string;
 	clearError?: () => void;
+	labelAsPlaceholder?: boolean;
 }
 
 const Input = ({
 	clearError,
+	labelAsPlaceholder = false,
 	onChange,
 	label,
 	register,
@@ -21,17 +23,18 @@ const Input = ({
 }: Props) => {
 	return (
 		<div className={styles.inputWrapper}>
-			{label && (
+			{label && !labelAsPlaceholder && (
 				<label className={styles.label} htmlFor={label}>
 					{label}
 				</label>
 			)}
 			<div className={styles.inputContainer}>
 				<input
-					className={styles.input}
+					className={`${styles.input} placeholder:text-menu text-sm`}
 					id={label}
 					{...register}
 					{...props}
+					placeholder={labelAsPlaceholder ? label : undefined}
 					onChange={e => {
 						clearError?.();
 						onChange?.(e);

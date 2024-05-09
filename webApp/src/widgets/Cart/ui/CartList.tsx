@@ -24,7 +24,7 @@ export const CartList = () => {
 				const { title, price } = position;
 				const buttonClassName = `flex aspect-square h-full w-full max-w-[30px] items-center justify-center rounded-xl leading-[1] ${styles.button}`;
 				return (
-					<li key={id} className="flex gap-3">
+					<li key={id} className="flex justify-between gap-3">
 						<div className="flex gap-1">
 							<img
 								src="/imagePlaceholder.jpg"

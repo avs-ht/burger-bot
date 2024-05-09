@@ -4,11 +4,11 @@
 
 	.input {
 		border-radius: 12px;
-		background-color: white;
-		padding: 18.5px 16px;
+		background-color: var(--info-block-bg-color);
+		padding: 16px 14px;
 		width: 100%;
-		color: black;
-		font-weight: 500;
+
+		font-weight: 400;
 	}
 	.inputContainer {
 		position: relative;

@@ -13,6 +13,7 @@
 import { Route as rootRoute } from './app/routes/__root'
 import { Route as IndexImport } from './app/routes/index'
 import { Route as ProfileIndexImport } from './app/routes/profile/index'
+import { Route as PolicyIndexImport } from './app/routes/policy/index'
 import { Route as OrderIndexImport } from './app/routes/order/index'
 import { Route as ContactsIndexImport } from './app/routes/contacts/index'
 import { Route as CartIndexImport } from './app/routes/cart/index'
@@ -27,6 +28,11 @@ const IndexRoute = IndexImport.update({
 
 const ProfileIndexRoute = ProfileIndexImport.update({
   path: '/profile/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const PolicyIndexRoute = PolicyIndexImport.update({
+  path: '/policy/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -74,6 +80,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OrderIndexImport
       parentRoute: typeof rootRoute
     }
+    '/policy/': {
+      preLoaderRoute: typeof PolicyIndexImport
+      parentRoute: typeof rootRoute
+    }
     '/profile/': {
       preLoaderRoute: typeof ProfileIndexImport
       parentRoute: typeof rootRoute
@@ -89,6 +99,7 @@ export const routeTree = rootRoute.addChildren([
   CartIndexRoute,
   ContactsIndexRoute,
   OrderIndexRoute,
+  PolicyIndexRoute,
   ProfileIndexRoute,
 ])
 
