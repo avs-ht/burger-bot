@@ -14,6 +14,7 @@ export const MenuPositionItem = ({
 }) => {
 	const { addToCart, deleteFromCart, price, cart } = useCartStore();
 	const { tg } = useTg();
+
 	useEffect(() => {
 		if (!price) {
 			tg.MainButton.hide();
@@ -48,7 +49,7 @@ export const MenuPositionItem = ({
 						onClick={() => addToCart(menuPosition.id)}
 					>{`${(+menuPosition.price).toFixed(0)} ₽`}</button>
 				) : (
-					<div className="flex items-center justify-between gap-5">
+					<div className="flex max-h-[40px] items-center justify-between gap-5">
 						<button
 							className="flex aspect-square w-[40px] items-center justify-center rounded-xl bg-app-green text-xl leading-[1] text-white"
 							onClick={() => deleteFromCart(menuPosition.id)}

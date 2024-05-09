@@ -11,9 +11,15 @@ body {
 	--info-block-bg-color: #fff;
 	--info-block-title-color: #4c4c4c;
 	--info-block-divider-color: #dcdee0;
+	--button-bg-color: var(--tg-theme-button-color, #3a8ffe);
+	--button-text-color: var(--tg-theme-button-text-color, #fff);
 
 	background-color: var(--tg-theme-bg-color);
 	color: var(--tg-text-color);
+	button {
+		background-color: var(--button-bg-color);
+		color: var(--button-text-color);
+	}
 
 	&[data-theme='dark'] {
 		--info-block-divider-color: #394550;
