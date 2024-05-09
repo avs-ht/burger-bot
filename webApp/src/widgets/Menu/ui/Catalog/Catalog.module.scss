@@ -5,3 +5,15 @@
 		display: none;
 	}
 }
+.button {
+	color: black;
+	&.active {
+		background-color: var(--button-bg-color) !important;
+		color: white;
+	}
+}
+[data-theme='dark'] {
+	.button {
+		color: white;
+	}
+}

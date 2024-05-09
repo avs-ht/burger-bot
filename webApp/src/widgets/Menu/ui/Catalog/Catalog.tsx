@@ -40,9 +40,12 @@ export const Catalog = () => {
 					return (
 						<InView as="li" key={htmlId}>
 							<button
-								className={clsx('whitespace-nowrap rounded-2xl px-3 py-2', {
-									'bg-transparent text-black': !isCurrCatalog,
-								})}
+								className={clsx(
+									`whitespace-nowrap rounded-2xl bg-transparent px-3 py-2 ${styles.button}`,
+									{
+										[`${styles.active}`]: isCurrCatalog,
+									},
+								)}
 								disabled={isCurrCatalog}
 								onClick={() => {
 									isCatalogChanged.current = true;
