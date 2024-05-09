@@ -27,6 +27,10 @@ export default db.define(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    lastBotMessage: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   },
   { timestamps: true, updatedAt: true }
 );

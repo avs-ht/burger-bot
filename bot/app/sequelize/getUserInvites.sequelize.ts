@@ -1,5 +1,5 @@
-import db from "../../connections/db.connection";
-import userModel from "../../models/user.model";
+import db from "../connections/db.connection";
+import userModel from "../models/user.model";
 
 export const getUserInvitesAmount = async (login: string) => {
   await db.sync();

@@ -1,5 +1,5 @@
-import db from "../../connections/db.connection";
-import userModel from "../../models/user.model";
+import db from "../connections/db.connection";
+import userModel from "../models/user.model";
 export const saveUser = async (login: string, invitedBy?: string) => {
   await db.sync();
 
@@ -19,6 +19,17 @@ export const saveUser = async (login: string, invitedBy?: string) => {
       login: login,
       invitedBy: sender ? invitedBy : "",
     });
-    return "created";
+
+    if (sender) {
+      const senderInvitedUsers = (sender.get("invitedUsers") as any[]) || [];
+      await sender.update({
+        invitedUsers: [...senderInvitedUsers, login],
+      });
+      return {
+        invitedBy: invitedBy,
+      };
+    }
+    return null;
   }
+  return null;
 };
