@@ -5,13 +5,18 @@
     "ts-node": "^10.9.2"
   },
   "dependencies": {
-    "node-telegram-bot-api": "^0.65.1"
+    "dotenv": "^16.4.5",
+    "node-telegram-bot-api": "^0.65.1",
+    "pg": "^8.11.5",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.3"
   },
   "name": "bot",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon index.ts"
+    "start": "node index.ts",
+    "start:dev": "nodemon index.ts"
   },
   "author": "",
   "license": "ISC",

@@ -12,22 +12,17 @@
 
 import { Route as rootRoute } from './app/routes/__root'
 import { Route as IndexImport } from './app/routes/index'
-import { Route as ProfileIndexImport } from './app/routes/profile/index'
 import { Route as PolicyIndexImport } from './app/routes/policy/index'
 import { Route as OrderIndexImport } from './app/routes/order/index'
 import { Route as ContactsIndexImport } from './app/routes/contacts/index'
 import { Route as CartIndexImport } from './app/routes/cart/index'
 import { Route as BookIndexImport } from './app/routes/book/index'
+import { Route as ProfileIdImport } from './app/routes/profile/$id'
 
 // Create/Update Routes
 
 const IndexRoute = IndexImport.update({
   path: '/',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const ProfileIndexRoute = ProfileIndexImport.update({
-  path: '/profile/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -56,12 +51,21 @@ const BookIndexRoute = BookIndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const ProfileIdRoute = ProfileIdImport.update({
+  path: '/profile/$id',
+  getParentRoute: () => rootRoute,
+} as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/': {
       preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/profile/$id': {
+      preLoaderRoute: typeof ProfileIdImport
       parentRoute: typeof rootRoute
     }
     '/book/': {
@@ -84,10 +88,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PolicyIndexImport
       parentRoute: typeof rootRoute
     }
-    '/profile/': {
-      preLoaderRoute: typeof ProfileIndexImport
-      parentRoute: typeof rootRoute
-    }
   }
 }
 
@@ -95,12 +95,12 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren([
   IndexRoute,
+  ProfileIdRoute,
   BookIndexRoute,
   CartIndexRoute,
   ContactsIndexRoute,
   OrderIndexRoute,
   PolicyIndexRoute,
-  ProfileIndexRoute,
 ])
 
 /* prettier-ignore-end */
