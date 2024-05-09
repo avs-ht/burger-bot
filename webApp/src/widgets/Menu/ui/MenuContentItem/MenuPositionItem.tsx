@@ -40,8 +40,8 @@ export const MenuPositionItem = ({
 			})}
 		>
 			<img
-				className="aspect-video w-full rounded-t-3xl"
-				src={menuPosition.image}
+				className="aspect-video w-full rounded-t-3xl object-cover"
+				src="/imagePlaceholder.jpg"
 				alt={menuPosition.description}
 			/>
 			<div className="p-3">
