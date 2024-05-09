@@ -24,9 +24,12 @@ const FormSchema = z.object({
 	tableNumber: z
 		.string({ required_error: 'Это поле обязательное' })
 		.min(1, 'Нужно заполнить поле'),
-	name: z
-		.string({ required_error: 'Это поле обязательное' })
-		.min(1, 'Нужно заполнить поле'),
+	name: z.string({ required_error: 'Это поле обязательное' }).refine(
+		(text: string) => {
+			return text.length > 2;
+		},
+		{ message: 'Имя должно быть больше 2 символов' },
+	),
 });
 
 type FormType = z.infer<typeof FormSchema>;
