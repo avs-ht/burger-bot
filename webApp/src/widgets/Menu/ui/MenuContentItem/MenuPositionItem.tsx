@@ -1,3 +1,4 @@
+import { useNavigate } from '@tanstack/react-router';
 import clsx from 'clsx';
 import { useEffect } from 'react';
 
@@ -14,6 +15,7 @@ export const MenuPositionItem = ({
 }) => {
 	const { addToCart, deleteFromCart, price, cart } = useCartStore();
 	const { tg } = useTg();
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		if (!price) {
@@ -27,6 +29,10 @@ export const MenuPositionItem = ({
 		tg.MainButton.show();
 	}, [price, tg.MainButton]);
 
+	useEffect(() => {
+		tg.MainButton.onClick(() => navigate({ to: '/' }));
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 	return (
 		<div
 			className={clsx('rounded-3xl rounded-t-[100px]', styles.item, {
