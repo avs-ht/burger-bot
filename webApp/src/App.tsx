@@ -18,6 +18,7 @@ const tg = window.Telegram.WebApp;
 export const App = () => {
 	useEffect(() => {
 		tg.ready();
+		tg.expand();
 		if (tg.colorScheme === 'dark') {
 			document.body.setAttribute('data-theme', 'dark');
 		} else {

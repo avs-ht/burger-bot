@@ -11,10 +11,16 @@ const FormSchema = z.object({
 		.min(1, 'Нужно заполнить поле'),
 	visitDate: z
 		.string({ required_error: 'Это поле обязательное' })
-		.min(1, 'Нужно заполнить поле'),
+		.min(1, 'Нужно заполнить поле')
+		.refine(
+			(text: string) => {
+				return new Date(text) > new Date();
+			},
+			{ message: 'Дата не может быть в прошлом :)' },
+		),
 	phone: z
 		.string({ required_error: 'Это поле обязательное' })
-		.min(11, 'Нужно заполнить поле'),
+		.min(11, 'Введите минимум 11 цифр'),
 	tableNumber: z
 		.string({ required_error: 'Это поле обязательное' })
 		.min(1, 'Нужно заполнить поле'),
@@ -35,21 +41,41 @@ export const BookTable = () => {
 	const {
 		register,
 		clearErrors: clearError,
+		handleSubmit,
 		formState: { errors },
+		getValues,
 		setError,
 		trigger,
 	} = useForm<FormType>({
 		resolver: zodResolver(FormSchema),
 	});
 
+	const values = getValues();
 	tg.MainButton.onClick(async () => {
 		await trigger();
 		if (errors) return;
-		else tg.sendData(JSON.stringify({ errors }));
+		else
+			tg.sendData(
+				JSON.stringify({
+					type: 'booking',
+					...values,
+				}),
+			);
 	});
 
 	return (
 		<form className="flex flex-col gap-3 pb-7">
+			<button
+				onClick={() => {
+					handleSubmit(() => {})();
+					if (Object.values(errors).filter(Boolean).length) return;
+					tg.sendData(JSON.stringify({ type: 'booking', ...values }));
+					console.log(values);
+				}}
+				type="button"
+			>
+				121212
+			</button>
 			<Input
 				label="Время визита"
 				register={register('visitTime')}
