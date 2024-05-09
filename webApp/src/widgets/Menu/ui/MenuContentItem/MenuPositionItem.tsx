@@ -45,13 +45,13 @@ export const MenuPositionItem = ({
 				)}
 				{!cart[menuPosition.id] ? (
 					<button
-						className="w-full rounded-xl bg-app-green py-3 text-xs text-white"
+						className="w-full rounded-xl py-3 text-xs text-white"
 						onClick={() => addToCart(menuPosition.id)}
 					>{`${(+menuPosition.price).toFixed(0)} ₽`}</button>
 				) : (
 					<div className="flex max-h-[40px] items-center justify-between gap-5">
 						<button
-							className="flex aspect-square w-[40px] items-center justify-center rounded-xl bg-app-green text-xl leading-[1] text-white"
+							className="flex aspect-square h-full items-center justify-center rounded-xl text-xl leading-[1]"
 							onClick={() => deleteFromCart(menuPosition.id)}
 						>
 							-
@@ -60,7 +60,7 @@ export const MenuPositionItem = ({
 							{cart[menuPosition.id]}
 						</div>
 						<button
-							className="flex aspect-square w-[40px] items-center justify-center rounded-xl bg-app-green leading-[1] text-white"
+							className="flex aspect-square h-full items-center justify-center rounded-xl leading-[1]"
 							onClick={() => addToCart(menuPosition.id)}
 						>
 							+

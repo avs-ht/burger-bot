@@ -16,7 +16,6 @@ const CATALOG = {
 export const Catalog = () => {
 	const isCatalogChanged = useRef(false);
 	const { currCatalog, setCurrCatalog } = useContext(CatalogContext);
-	const activeItemClass = 'bg-app-green text-white';
 	useEffect(() => {
 		if (!isCatalogChanged.current) return;
 		window.requestAnimationFrame(() => {
@@ -39,13 +38,11 @@ export const Catalog = () => {
 					const [catalogName, htmlId] = catalog;
 					const isCurrCatalog = htmlId === currCatalog;
 					return (
-						<InView
-							key={htmlId}
-							className={clsx('whitespace-nowrap rounded-2xl px-3 py-2', {
-								[activeItemClass]: isCurrCatalog,
-							})}
-						>
+						<InView as="li" key={htmlId}>
 							<button
+								className={clsx('whitespace-nowrap rounded-2xl px-3 py-2', {
+									'bg-transparent text-black': !isCurrCatalog,
+								})}
 								disabled={isCurrCatalog}
 								onClick={() => {
 									isCatalogChanged.current = true;
