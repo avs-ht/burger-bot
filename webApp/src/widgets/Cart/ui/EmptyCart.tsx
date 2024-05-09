@@ -1,4 +1,4 @@
-import { useNavigate, useRouter } from '@tanstack/react-router';
+import { useNavigate } from '@tanstack/react-router';
 import { useEffect } from 'react';
 
 import { useTg } from '$/shared/lib/useTg';
@@ -10,7 +10,7 @@ export const EmptyCart = () => {
 		tg.MainButton.show();
 		tg.MainButton.setText('Вернуться обратно');
 		tg.MainButton.onClick(() => navigate({ to: '/' }));
-	}, []);
+	}, [navigate, tg.MainButton]);
 	return (
 		<div className="flex flex-col items-center gap-5 pt-8">
 			<svg
