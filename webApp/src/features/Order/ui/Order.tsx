@@ -20,7 +20,7 @@ export const Order = () => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 	return (
-		<div className="flex flex-col gap-4">
+		<div className="flex flex-col gap-4 pt-7">
 			<TitleBlock title="Способ получения заказа">
 				<WayGettingOrder />
 			</TitleBlock>
