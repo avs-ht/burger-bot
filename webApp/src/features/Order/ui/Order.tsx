@@ -1,4 +1,4 @@
-import { Link, useNavigate } from '@tanstack/react-router';
+import { useNavigate } from '@tanstack/react-router';
 import { useEffect } from 'react';
 
 import { useTg } from '$/shared/lib/useTg';
@@ -34,9 +34,15 @@ export const Order = () => {
 				Нажимая на кнопку “Продолжить” вы даете согласие на обработку и хранение
 				персональных данных в соответствии с Политикой конфиденциальности и
 				условиями.{' '}
-				<Link to={'/policy'} className="!text-[#40a7e4]">
+				<button
+					className="bg-transparent !text-[#40a7e4]"
+					onClick={() => {
+						navigate({ to: '/policy' });
+						tg.MainButton.hide();
+					}}
+				>
 					Подробнее
-				</Link>
+				</button>
 			</p>
 		</div>
 	);

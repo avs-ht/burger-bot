@@ -9,6 +9,7 @@ export const PolicyPage = () => {
 	useEffect(() => {
 		tg.BackButton.onClick(() => {
 			navigate({ to: '/order' });
+			tg.MainButton.show();
 		});
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
