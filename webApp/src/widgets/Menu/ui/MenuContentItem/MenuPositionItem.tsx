@@ -28,7 +28,11 @@ export const MenuPositionItem = ({
 	}, [price, tg.MainButton]);
 
 	return (
-		<div className={clsx('rounded-3xl rounded-t-[100px]', styles.item)}>
+		<div
+			className={clsx('rounded-3xl rounded-t-[100px]', styles.item, {
+				[styles.active]: menuPosition.id in cart && cart[menuPosition.id] > 0,
+			})}
+		>
 			<img
 				className="aspect-video w-full rounded-t-3xl"
 				src={menuPosition.image}
