@@ -41,7 +41,7 @@ export const Information = () => {
 				([key, value]) =>
 					`${menuPositions.find(pos => pos.id === key)?.title} - x${Number(value)} ${+(menuPositions.find(pos => pos.id === key)?.price || 0) * value} ₽`,
 			);
-			const message = `Номер стола: ${values.tableNumber}\nКомментарий: ${values.commentary} ${dishes.join(
+			const message = `Номер стола: ${values.tableNumber}\nКомментарий: ${values.commentary}\nБлюда:\n${dishes.join(
 				'\n',
 			)} \nИтого: ${price} ₽`;
 			tg.sendData(message);
