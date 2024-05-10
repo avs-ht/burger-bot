@@ -69,7 +69,7 @@ export const BookTable = ({ chatId }: { chatId: string }) => {
 	const values = getValues();
 	tg.MainButton.onClick(async () => {
 		handleSubmit(() => {})();
-		if (errors) return;
+		if (Object.values(errors).filter(Boolean).length) return;
 		const message = `Забронирован столик: ${values.tableNumber}\nВремя: ${values.visitTime}\nДата: ${values.visitDate}\nНомер телефона: ${values.phone}\nИмя: ${values.name}`;
 		mutate(message);
 	});
