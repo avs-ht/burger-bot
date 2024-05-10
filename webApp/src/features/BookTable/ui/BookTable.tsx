@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -53,15 +54,16 @@ export const BookTable = () => {
 		resolver: zodResolver(FormSchema),
 	});
 
-	const values = getValues();
-	tg.MainButton.onClick(async () => {
-		handleSubmit(() => {})();
-		if (Object.values(errors).filter(Boolean).length) return;
-
-		const message = `Забронирован столик: ${values.tableNumber}\nВремя: ${values.visitTime}\nДата: ${values.visitDate}\nНомер телефона: ${values.phone}\nИмя: ${values.name}${JSON.stringify(values)}`;
-		tg.sendData(message);
-		tg.close();
-	});
+	useEffect(() => {
+		tg.MainButton.onClick(() => {
+			handleSubmit(() => {})();
+			if (Object.values(errors).filter(Boolean).length) return;
+			const values = getValues();
+			const message = `Забронирован столик: ${values.tableNumber}\nВремя: ${values.visitTime}\nДата: ${values.visitDate}\nНомер телефона: ${values.phone}\nИмя: ${values.name}`;
+			tg.sendData(message);
+			tg.close();
+		});
+	}, [errors, tg, tg.MainButton, handleSubmit, getValues]);
 
 	return (
 		<form className="flex flex-col gap-3 pb-7">
