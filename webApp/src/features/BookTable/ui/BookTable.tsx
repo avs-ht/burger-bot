@@ -76,17 +76,6 @@ export const BookTable = ({ chatId }: { chatId: string }) => {
 
 	return (
 		<form className="flex flex-col gap-3 pb-7">
-			<button
-				onClick={() => {
-					handleSubmit(() => {})();
-					if (Object.values(errors).filter(Boolean).length) return;
-					tg.sendData(JSON.stringify({ type: 'booking', ...values }));
-					console.log(values);
-				}}
-				type="button"
-			>
-				121212
-			</button>
 			<Input
 				label="Время визита"
 				register={register('visitTime')}
