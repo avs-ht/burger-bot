@@ -27,13 +27,8 @@ export default db.define(
       type: DataTypes.STRING,
       allowNull: true,
     },
-    lastBotMessage: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
     state: {
       type: DataTypes.STRING,
-
       allowNull: true,
     },
   },

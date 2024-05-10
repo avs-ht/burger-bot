@@ -2,8 +2,6 @@ import replyMarkup, { keyBoard } from "../replyMarkup";
 import bot from "../connections/bot.connection";
 import { saveUser } from "../sequelize/saveUser.sequelize";
 import { getUserInvitesAmount } from "../sequelize/getUserInvites.sequelize";
-import { getLastMessageBot } from "../sequelize/getLastMessageBot.sequelize";
-import { setLastMessageBot } from "../sequelize/setLastMessageBot.sequelize";
 
 const handleStartCommand = async (msg) => {
   const name = msg.from?.first_name || msg.from?.username || "гость";
@@ -14,7 +12,7 @@ const handleStartCommand = async (msg) => {
 
     const invitedUsers = await getUserInvitesAmount(chatId);
 
-    const message = await bot.sendMessage(
+    await bot.sendMessage(
       chatId,
       `Привет ${name}! Мы рады тебя видеть в нашем заведении!\nВыбери пункт из меню`,
       {
@@ -33,7 +31,7 @@ const handleStartCommand = async (msg) => {
       `${name} присоединился к нам по вашей ссылке! Спасибо!`
     );
     const senderInvitedUsers = await getUserInvitesAmount(answer.invitedBy);
-    const senderMessage = await bot.sendMessage(
+    await bot.sendMessage(
       answer.invitedBy,
       "Мы рады тебя видеть в нашем заведении!",
       {
