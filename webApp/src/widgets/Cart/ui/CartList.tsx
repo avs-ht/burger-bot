@@ -21,15 +21,15 @@ export const CartList = () => {
 				const position = menuPositions.find(position => position.id === id);
 				if (!position || count <= 0) return null;
 
-				const { title, price } = position;
+				const { title, price, image } = position;
 				const buttonClassName = `flex aspect-square h-full w-full max-w-[30px] items-center justify-center rounded-xl leading-[1] ${styles.button}`;
 				return (
 					<li key={id} className="flex justify-between gap-3">
 						<div className="flex gap-1">
 							<img
-								src="/imagePlaceholder.jpg"
+								src={image}
 								alt=""
-								className="max-h-[65px]"
+								className="max-h-[65px] max-w-[65px] object-cover"
 							/>
 							<div className="">
 								<h2 className="mb-3 line-clamp-1">{title}</h2>

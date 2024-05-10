@@ -1,15 +1,15 @@
 {
 	"result": [
 		{
-			"title": "Bespoke Steel Bike",
-			"description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
+			"title": "🥘 Основные блюда",
+			"description": "Мы предлагаем вам самые свежие и вкусные блюда, которые точно порадуют вас и ваших близких",
 			"id": "mainDishes",
 			"menuPositions": [
 				{
-					"image": "https://loremflickr.com/640/480?lock=689970847154176",
-					"title": "Awesome Metal Computer",
+					"image": "/mainDishes/buratta.png",
+					"title": "Буррата",
 					"id": "92c126dc-c67b-4739-a17e-ef0241ae81fb",
-					"description": "The Football Is Good For Training And Recreational Purposes",
+					"description": "со сладкими томатами, оливковым маслом и листьями зеленого базилика",
 					"price": "990.00",
 					"isSpicy": false,
 					"isChefChoice": false,
@@ -18,22 +18,10 @@
 					"isNewDish": false
 				},
 				{
-					"image": "https://picsum.photos/seed/qJq35M/640/480",
-					"title": "Elegant Concrete Hat",
-					"id": "9cfd9a4a-75c5-456e-af0a-8713dd083834",
-					"description": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
-					"price": "470.00",
-					"isSpicy": false,
-					"isChefChoice": false,
-					"isMonthDish": false,
-					"isFromChef": false,
-					"isNewDish": false
-				},
-				{
-					"image": "https://picsum.photos/seed/7SD2dT1DX/640/480",
-					"title": "Awesome Granite Cheese",
+					"image": "/mainDishes/soup.png",
+					"title": "СЛИВОЧНЫЙ КРЕМ-СУП ИЗ ШАМПИНЬОНОВ",
 					"id": "329356d0-e6bc-4dee-94db-850f20416753",
-					"description": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+					"description": "с трюфельной пастой и кедровыми орешками",
 					"price": "190.00",
 					"isSpicy": false,
 					"isChefChoice": false,
@@ -42,10 +30,10 @@
 					"isNewDish": false
 				},
 				{
-					"image": "https://picsum.photos/seed/uTmmMT65/640/480",
-					"title": "Small Metal Chicken",
+					"image": "/mainDishes/sudak.png",
+					"title": "СУДАК ПО-ТАЙСКИ",
 					"id": "8537aa15-3849-441e-8820-60eaf5a271e3",
-					"description": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+					"description": "с хрустящими баклажанами, цукини, болгарским перцем, репчатым луком, листьями кинзы и кунжутом в соусе тайский чили и терияки",
 					"price": "916.00",
 					"isSpicy": false,
 					"isChefChoice": false,
@@ -54,10 +42,10 @@
 					"isNewDish": false
 				},
 				{
-					"image": "https://loremflickr.com/640/480?lock=2828036382654464",
-					"title": "Oriental Bronze Computer",
+					"image": "/mainDishes/tartar.png",
+					"title": "ТАР-ТАР ИЗ СЛАБОСОЛЁНОГО ЛОСОСЯ",
 					"id": "2cfaacec-fb64-499c-81cd-5af456940344",
-					"description": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+					"description": "с авокадо, хрустящим огурчиком, каперсамии соусом вафу. Подается с креветочными чипсами",
 					"price": "251.00",
 					"isSpicy": false,
 					"isChefChoice": false,
@@ -68,16 +56,16 @@
 			]
 		},
 		{
-			"title": "Intelligent Wooden Shoes",
-			"description": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+			"title": "🍔 Бургеры",
+			"description": "Мы предлагаем вам самые сочные и аппетитные гамбургеры, которые вы когда-либо пробовали. Наш секрет - только свежие ингредиенты и мастерство наших поваров.",
 			"id": "burgers",
 			"menuPositions": [
 				{
-					"image": "https://picsum.photos/seed/nPB2K71/640/480",
-					"title": "Small Metal Pants",
+					"image": "/burgers/burger1.png",
+					"title": "DORKY PORKY",
 					"id": "3d02c7c5-1800-4a6e-ba3c-790b3e8771c0",
-					"description": "The Football Is Good For Training And Recreational Purposes",
-					"price": "940.00",
+					"description": "Бургер с котлетой из мрaморной говядины, жаренным беконом, томатами, листьями салата, маринованным огурцом и фирменным коктейльным соусом",
+					"price": "590.00",
 					"isSpicy": false,
 					"isChefChoice": false,
 					"isMonthDish": false,
@@ -85,10 +73,10 @@
 					"isNewDish": false
 				},
 				{
-					"image": "https://loremflickr.com/640/480?lock=8746849112424448",
-					"title": "Gorgeous Wooden Towels",
+					"image": "/burgers/burger2.png",
+					"title": "ПАПА МЯСНИКА",
 					"id": "83bddf44-5c2b-47bf-9690-9a15e8000158",
-					"description": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+					"description": "Бургер с двойной котлетой из мраморной говядины, сыром чеддер, томатами, маринованным огурцом, листьями салата и копченным соусом бaрбекю",
 					"price": "886.00",
 					"isSpicy": false,
 					"isChefChoice": false,
@@ -97,10 +85,10 @@
 					"isNewDish": false
 				},
 				{
-					"image": "https://picsum.photos/seed/KtLhtI/640/480",
-					"title": "Small Cotton Mouse",
+					"image": "/burgers/burger3.png",
+					"title": "ДОЧЬ МЯСНИКА",
 					"id": "2cbf3188-40fd-4950-ba33-b77a22c4c725",
-					"description": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+					"description": "Вегетарианский бургер с фалафелем и сальсой из спелых томатов, рубленного лука и кинзы, с листьями салата, соусами тахина из кунжута и луковый кранч",
 					"price": "438.00",
 					"isSpicy": false,
 					"isChefChoice": false,
@@ -109,10 +97,10 @@
 					"isNewDish": false
 				},
 				{
-					"image": "https://loremflickr.com/640/480?lock=6943235685482496",
-					"title": "Generic Granite Table",
+					"image": "/burgers/burger4.png",
+					"title": "Пиццабургер",
 					"id": "09857a62-563c-4df7-8578-65ba18c86e4d",
-					"description": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+					"description": "Авторский бургер с котлетой из мраморной говядины, спелыми помидорами, сыром Моцарелла, Пепперони и томатным соусом с базиликом. Два классических вкуса вместе. Подается с хрустящим маринованным огурцом.",
 					"price": "192.00",
 					"isSpicy": false,
 					"isChefChoice": false,
@@ -123,15 +111,15 @@
 			]
 		},
 		{
-			"title": "Tasty Wooden Mouse",
-			"description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
+			"title": "🥗 Салаты",
+			"description": "Наши салаты готовятся только перед тем, как они будут поданы на ваш стол",
 			"id": "salats",
 			"menuPositions": [
 				{
-					"image": "https://loremflickr.com/640/480?lock=381289033105408",
-					"title": "Elegant Cotton Pants",
+					"image": "/salads/salad1.png",
+					"title": "Легкий салат",
 					"id": "64c9ac5d-b06a-49ed-b8af-229c437137e6",
-					"description": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+					"description": "с авокадо, хрустящими овощами, листьями романо, айсберга и шпината, бобами эдамаме",
 					"price": "732.00",
 					"isSpicy": false,
 					"isChefChoice": false,
@@ -140,7 +128,7 @@
 					"isNewDish": false
 				},
 				{
-					"image": "https://loremflickr.com/640/480?lock=1124971025793024",
+					"image": "/salads/salad2.png",
 					"title": "Incredible Bronze Pizza",
 					"id": "61dbe6b7-9f3a-4427-9029-2151225b36d3",
 					"description": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
@@ -152,7 +140,7 @@
 					"isNewDish": false
 				},
 				{
-					"image": "https://picsum.photos/seed/AoFZMno/640/480",
+					"image": "/salads/salad3.png",
 					"title": "Bespoke Plastic Ball",
 					"id": "1eab5d9a-465a-4a67-88de-82fe951dddf1",
 					"description": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
@@ -164,35 +152,11 @@
 					"isNewDish": false
 				},
 				{
-					"image": "https://loremflickr.com/640/480?lock=2384476489383936",
-					"title": "Practical Plastic Pizza",
-					"id": "690e6f03-af4c-4c74-9c34-84773e53fc38",
-					"description": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
-					"price": "289.00",
-					"isSpicy": false,
-					"isChefChoice": false,
-					"isMonthDish": false,
-					"isFromChef": false,
-					"isNewDish": false
-				},
-				{
-					"image": "https://picsum.photos/seed/Axg17HZlU/640/480",
-					"title": "Handmade Fresh Chicken",
-					"id": "0929886b-ebd5-436e-84e8-4f7c5bb20040",
-					"description": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
-					"price": "536.00",
-					"isSpicy": false,
-					"isChefChoice": false,
-					"isMonthDish": false,
-					"isFromChef": false,
-					"isNewDish": false
-				},
-				{
-					"image": "https://picsum.photos/seed/H32hXrtRA/640/480",
-					"title": "Sleek Granite Table",
-					"id": "e6c7f0b4-2b19-4ff6-a5a1-4066ed99cd0e",
-					"description": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
-					"price": "820.00",
+					"image": "/salads/salad4.png",
+					"title": "САЛАТ С ТУНЦОМ",
+					"id": "1eab5d9a-425a-4a67-88de-82fe951dddf1",
+					"description": "листьями шпината и айсберга, сладкими томатами и хрустящими огурчиками, редисом, маслинами, маринованным яйцом, красным лучком и соусом из анчоусов",
+					"price": "646.00",
 					"isSpicy": false,
 					"isChefChoice": false,
 					"isMonthDish": false,
@@ -202,12 +166,12 @@
 			]
 		},
 		{
-			"title": "Unbranded Bronze Chips",
-			"description": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+			"title": "🍰 Десерты",
+			"description": "Наша команда кондитеров готова предложить вам разнообразные варианты десертов, которые подойдут как для легкого перекуса, так и для особенных праздников.",
 			"id": "desserts",
 			"menuPositions": [
 				{
-					"image": "https://picsum.photos/seed/jNSJXd/640/480",
+					"image": "/desserts/dessert1.png",
 					"title": "Gorgeous Soft Sausages",
 					"id": "6fd893f2-ea3c-459d-83d5-ddaa4198d73a",
 					"description": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
@@ -219,7 +183,7 @@
 					"isNewDish": false
 				},
 				{
-					"image": "https://loremflickr.com/640/480?lock=4243747351035904",
+					"image": "/desserts/dessert2.png",
 					"title": "Refined Rubber Gloves",
 					"id": "c0e5e2e4-909b-4542-896d-3f3339c01c7d",
 					"description": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
@@ -231,7 +195,7 @@
 					"isNewDish": false
 				},
 				{
-					"image": "https://picsum.photos/seed/C1F7z5w/640/480",
+					"image": "/desserts/dessert3.png",
 					"title": "Handmade Metal Car",
 					"id": "ca258f2c-484c-40be-9941-a03e6e57e3f5",
 					"description": "The Football Is Good For Training And Recreational Purposes",
@@ -243,35 +207,11 @@
 					"isNewDish": false
 				},
 				{
-					"image": "https://loremflickr.com/640/480?lock=1182224126836736",
+					"image": "/desserts/dessert4.png",
 					"title": "Ergonomic Fresh Pants",
 					"id": "65fd8082-fae6-4a20-b36c-d0cc6e9af737",
 					"description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
 					"price": "301.00",
-					"isSpicy": false,
-					"isChefChoice": false,
-					"isMonthDish": false,
-					"isFromChef": false,
-					"isNewDish": false
-				},
-				{
-					"image": "https://picsum.photos/seed/E9L9Ajq/640/480",
-					"title": "Fantastic Soft Sausages",
-					"id": "e685c63c-c451-4cee-9ee8-a95eb82701b5",
-					"description": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
-					"price": "638.00",
-					"isSpicy": false,
-					"isChefChoice": false,
-					"isMonthDish": false,
-					"isFromChef": false,
-					"isNewDish": false
-				},
-				{
-					"image": "https://picsum.photos/seed/hcT8ost/640/480",
-					"title": "Luxurious Plastic Computer",
-					"id": "179b7a9b-93c9-4077-b6da-5e43b5fa25ac",
-					"description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
-					"price": "669.00",
 					"isSpicy": false,
 					"isChefChoice": false,
 					"isMonthDish": false,

@@ -41,15 +41,15 @@ export const MenuPositionItem = ({
 		>
 			<img
 				className="aspect-video w-full rounded-t-3xl object-cover"
-				src="/imagePlaceholder.jpg"
+				src={menuPosition.image}
 				alt={menuPosition.description}
 			/>
 			<div className="p-3">
-				<h4 className="mb-3 line-clamp-1 text-sm font-bold">
+				<h4 className="mb-3 line-clamp-1 text-sm font-bold capitalize">
 					{menuPosition.title}
 				</h4>
 				{menuPosition.description && (
-					<p className="text-menu mb-3 line-clamp-2 max-h-[32px] min-h-[32px] text-xs">
+					<p className="mb-3 line-clamp-2 max-h-[32px] min-h-[32px] text-xs text-menu">
 						{menuPosition.description}
 					</p>
 				)}
