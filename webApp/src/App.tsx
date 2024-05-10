@@ -19,7 +19,7 @@ export const App = () => {
 	useEffect(() => {
 		tg.ready();
 		tg.expand();
-		tg.sendData(JSON.stringify({ type: 'init' }));
+
 		if (tg.colorScheme === 'dark') {
 			document.body.setAttribute('data-theme', 'dark');
 		} else {

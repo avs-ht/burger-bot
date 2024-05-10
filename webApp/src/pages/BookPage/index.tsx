@@ -1,8 +1,8 @@
 import BookTable from '$/features/BookTable';
 import { Page } from '$/shared/ui/Page';
 
-export const BookPage = () => (
+export const BookPage = ({ chatId }: { chatId: string }) => (
 	<Page>
-		<BookTable />
+		<BookTable chatId={chatId} />
 	</Page>
 );

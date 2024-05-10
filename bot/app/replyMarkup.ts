@@ -12,12 +12,6 @@ export default (userId: string, invitesAmount: number) => {
     ],
     [
       {
-        text: "📋 Забронировать стол",
-        web_app: { url: `${WEB_APP_URL}book` },
-      },
-    ],
-    [
-      {
         text: "🎁 Мои бонусы",
         web_app: { url: `${WEB_APP_URL}wallet` },
       },

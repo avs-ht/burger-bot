@@ -17,8 +17,8 @@ import { Route as PolicyIndexImport } from './app/routes/policy/index'
 import { Route as OrderIndexImport } from './app/routes/order/index'
 import { Route as ContactsIndexImport } from './app/routes/contacts/index'
 import { Route as CartIndexImport } from './app/routes/cart/index'
-import { Route as BookIndexImport } from './app/routes/book/index'
 import { Route as ProfileIdImport } from './app/routes/profile/$id'
+import { Route as BookChatIdImport } from './app/routes/book/$chatId'
 
 // Create/Update Routes
 
@@ -52,13 +52,13 @@ const CartIndexRoute = CartIndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const BookIndexRoute = BookIndexImport.update({
-  path: '/book/',
+const ProfileIdRoute = ProfileIdImport.update({
+  path: '/profile/$id',
   getParentRoute: () => rootRoute,
 } as any)
 
-const ProfileIdRoute = ProfileIdImport.update({
-  path: '/profile/$id',
+const BookChatIdRoute = BookChatIdImport.update({
+  path: '/book/$chatId',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -70,12 +70,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/profile/$id': {
-      preLoaderRoute: typeof ProfileIdImport
+    '/book/$chatId': {
+      preLoaderRoute: typeof BookChatIdImport
       parentRoute: typeof rootRoute
     }
-    '/book/': {
-      preLoaderRoute: typeof BookIndexImport
+    '/profile/$id': {
+      preLoaderRoute: typeof ProfileIdImport
       parentRoute: typeof rootRoute
     }
     '/cart/': {
@@ -105,8 +105,8 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren([
   IndexRoute,
+  BookChatIdRoute,
   ProfileIdRoute,
-  BookIndexRoute,
   CartIndexRoute,
   ContactsIndexRoute,
   OrderIndexRoute,
