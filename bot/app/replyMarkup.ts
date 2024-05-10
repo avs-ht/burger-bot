@@ -3,17 +3,10 @@ import { BOT_URL, WEB_APP_URL } from "./constants";
 
 export default (userId: string, invitesAmount: number) => {
   const inline_keyboard: InlineKeyboardButton[][] = [
-    [{ text: "🗂 Меню", web_app: { url: WEB_APP_URL } }],
     [
       {
         text: "☺️ Профиль",
         web_app: { url: `${WEB_APP_URL}profile/${invitesAmount}` },
-      },
-    ],
-    [
-      {
-        text: "🎁 Забронировать столик",
-        web_app: { url: `${WEB_APP_URL}book/${userId}` },
       },
     ],
     [
@@ -38,5 +31,19 @@ export default (userId: string, invitesAmount: number) => {
 
   return {
     inline_keyboard,
+  };
+};
+
+export const keyBoard = () => {
+  return {
+    keyboard: [
+      [
+        {
+          text: "T Забронировать столик",
+          web_app: { url: `${WEB_APP_URL}book` },
+        },
+      ],
+      [{ text: "🗂 Меню", web_app: { url: WEB_APP_URL } }],
+    ],
   };
 };

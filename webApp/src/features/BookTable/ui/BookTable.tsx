@@ -1,6 +1,4 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useMutation } from '@tanstack/react-query';
-import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -36,20 +34,9 @@ const FormSchema = z.object({
 
 type FormType = z.infer<typeof FormSchema>;
 
-export const BookTable = ({ chatId }: { chatId: string }) => {
+export const BookTable = () => {
 	const { tg } = useTg();
-	const { mutate } = useMutation({
-		mutationKey: ['booking'],
-		mutationFn: (message: string) => {
-			return axios.post('/book', {
-				chatId,
-				message,
-			});
-		},
-		onSuccess: () => {
-			tg.close();
-		},
-	});
+
 	tg.MainButton.setParams({
 		text: 'Забронировать стол',
 	});
@@ -71,7 +58,8 @@ export const BookTable = ({ chatId }: { chatId: string }) => {
 		handleSubmit(() => {})();
 		if (Object.values(errors).filter(Boolean).length) return;
 		const message = `Забронирован столик: ${values.tableNumber}\nВремя: ${values.visitTime}\nДата: ${values.visitDate}\nНомер телефона: ${values.phone}\nИмя: ${values.name}`;
-		mutate(message);
+		tg.sendData(message);
+		tg.close();
 	});
 
 	return (

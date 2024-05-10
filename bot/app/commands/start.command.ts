@@ -1,4 +1,4 @@
-import replyMarkup from "../replyMarkup";
+import replyMarkup, { keyBoard } from "../replyMarkup";
 import bot from "../connections/bot.connection";
 import { saveUser } from "../sequelize/saveUser.sequelize";
 import { getUserInvitesAmount } from "../sequelize/getUserInvites.sequelize";
@@ -14,29 +14,20 @@ const handleStartCommand = async (msg) => {
 
     const invitedUsers = await getUserInvitesAmount(chatId);
 
-    const lastBotMessage = await getLastMessageBot(chatId);
-
-    if (lastBotMessage) {
-      bot.deleteMessage(chatId, +lastBotMessage);
-      bot.deleteMessage(chatId, msg.message_id);
-    }
-
     const message = await bot.sendMessage(
       chatId,
-      `Привет ${name}! Мы рады тебя видеть в нашем заведении!`,
+      `Привет ${name}! Мы рады тебя видеть в нашем заведении!\nВыбери пункт из меню`,
       {
         reply_markup: replyMarkup(chatId, invitedUsers || 0),
       }
     );
 
-    setLastMessageBot(chatId, message.message_id.toString());
+    bot.sendMessage(chatId, `Либо же нажми на появившиеся кнопки снизу!`, {
+      reply_markup: keyBoard(),
+    });
 
     if (!answer.invitedBy) return;
 
-    const lastSenderBotMessage = await getLastMessageBot(answer.invitedBy);
-    if (!lastSenderBotMessage) return;
-
-    await bot.deleteMessage(answer.invitedBy, +lastSenderBotMessage);
     await bot.sendMessage(
       answer.invitedBy,
       `${name} присоединился к нам по вашей ссылке! Спасибо!`
@@ -49,7 +40,6 @@ const handleStartCommand = async (msg) => {
         reply_markup: replyMarkup(answer.invitedBy, senderInvitedUsers || 0),
       }
     );
-    setLastMessageBot(answer.invitedBy, senderMessage.message_id.toString());
   } catch (error) {
     console.log(error);
     bot.sendMessage(
