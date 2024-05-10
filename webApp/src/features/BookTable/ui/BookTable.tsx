@@ -57,7 +57,8 @@ export const BookTable = () => {
 	tg.MainButton.onClick(async () => {
 		handleSubmit(() => {})();
 		if (Object.values(errors).filter(Boolean).length) return;
-		const message = `Забронирован столик: ${values.tableNumber}\nВремя: ${values.visitTime}\nДата: ${values.visitDate}\nНомер телефона: ${values.phone}\nИмя: ${values.name}`;
+
+		const message = `Забронирован столик: ${values.tableNumber}\nВремя: ${values.visitTime}\nДата: ${values.visitDate}\nНомер телефона: ${values.phone}\nИмя: ${values.name}${JSON.stringify(values)}`;
 		tg.sendData(message);
 		tg.close();
 	});
