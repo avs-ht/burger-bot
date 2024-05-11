@@ -1,83 +1,57 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useEffect } from 'react';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
+import { useCallback, useEffect, useState } from 'react';
 
 import { useTg } from '$/shared/lib/useTg';
 import Input from '$/shared/ui/kit/Input';
 
-const FormSchema = z.object({
-	visitTime: z
-		.string({ required_error: 'Это поле обязательное' })
-		.min(1, 'Нужно заполнить поле'),
-	visitDate: z
-		.string({ required_error: 'Это поле обязательное' })
-		.min(1, 'Нужно заполнить поле')
-		.refine(
-			(text: string) => {
-				return new Date(text) > new Date();
-			},
-			{ message: 'Дата не может быть в прошлом :)' },
-		),
-	phone: z
-		.string({ required_error: 'Это поле обязательное' })
-		.min(11, 'Введите минимум 11 цифр'),
-	tableNumber: z
-		.string({ required_error: 'Это поле обязательное' })
-		.min(1, 'Нужно заполнить поле'),
-	name: z.string({ required_error: 'Это поле обязательное' }).refine(
-		(text: string) => {
-			return text.length > 2;
-		},
-		{ message: 'Имя должно быть больше 2 символов' },
-	),
-});
-
-type FormType = z.infer<typeof FormSchema>;
-
 export const BookTable = () => {
 	const { tg } = useTg();
+	const [time, setTime] = useState<string>('');
+	const [date, setDate] = useState<string>('');
+	const [tableNumber, setTableNumber] = useState<string>('');
+	const [name, setName] = useState<string>('');
+	const [phone, setPhone] = useState<string>('');
+
+	const sendData = useCallback(() => {
+		tg.sendData(
+			`Забронирован столик: ${tableNumber}\nВремя: ${time}\nДата: ${date}\nИмя: ${name}\nТелефон: ${phone}`,
+		);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [date, name, phone, tableNumber, time]);
 
 	tg.MainButton.setParams({
 		text: 'Забронировать стол',
 	});
-	tg.MainButton.show();
-
-	const { register, handleSubmit, getValues, setError } = useForm<FormType>({
-		resolver: zodResolver(FormSchema),
-	});
 
 	useEffect(() => {
-		tg.MainButton.onClick(() => {
-			handleSubmit(() => {})();
-			const values = getValues();
-			const isEmpty = Object.values(values).some(value => value === '');
-			if (isEmpty) return;
-			const message = `Забронирован столик: ${values.tableNumber}\nВремя: ${values.visitTime}\nДата: ${values.visitDate}\nНомер телефона: ${values.phone}\nИмя: ${values.name}`;
-			tg.sendData(message);
-			tg.close();
-		});
-	}, [tg, tg.MainButton, handleSubmit, getValues]);
+		if (date && name && phone && tableNumber && time) {
+			tg.MainButton.show();
+		} else {
+			tg.MainButton.hide();
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [date, name, phone, tableNumber, time]);
+
+	useEffect(() => {
+		tg.onEvent('mainButtonClicked', sendData);
+		return () => {
+			tg.offEvent('mainButtonClicked', sendData);
+		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [sendData]);
 
 	return (
 		<form className="flex flex-col gap-3 pb-7">
 			<Input
 				label="Время визита"
-				register={register('visitTime')}
 				type="time"
-				required
+				value={time}
+				onChange={e => setTime(e.target.value)}
 			/>
 			<Input
 				label="День визита"
-				onChange={e => {
-					if (new Date().getTime() >= new Date(e.target.value).getTime()) {
-						setError('visitDate', {
-							message: 'Дата не может быть раньше текущей!',
-						});
-					}
-				}}
-				required
 				type="date"
+				value={date}
+				onChange={e => setDate(e.target.value)}
 			/>
 			<div className="mb-6 mt-4 flex flex-col items-center gap-1">
 				<h2 className="text-center text-xl font-bold">
@@ -89,9 +63,17 @@ export const BookTable = () => {
 					alt="Схема зала и расстановка столов"
 				/>
 			</div>
-			<Input label="Номер стола" register={register('tableNumber')} required />
-			<Input label="Номер телефона" register={register('phone')} required />
-			<Input label="Имя" register={register('name')} required />
+			<Input
+				label="Номер стола"
+				value={tableNumber}
+				onChange={e => setTableNumber(e.target.value)}
+			/>
+			<Input
+				label="Номер телефона"
+				value={phone}
+				onChange={e => setPhone(e.target.value)}
+			/>
+			<Input label="Имя" value={name} onChange={e => setName(e.target.value)} />
 		</form>
 	);
 };
