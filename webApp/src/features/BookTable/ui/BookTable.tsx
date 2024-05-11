@@ -57,8 +57,9 @@ export const BookTable = () => {
 	useEffect(() => {
 		tg.MainButton.onClick(() => {
 			handleSubmit(() => {})();
-			if (!Object.values(errors).filter(Boolean).length) return;
 			const values = getValues();
+			const isEmpty = Object.values(values).some(value => value === '');
+			if (isEmpty) return;
 			const message = `Забронирован столик: ${values.tableNumber}\nВремя: ${values.visitTime}\nДата: ${values.visitDate}\nНомер телефона: ${values.phone}\nИмя: ${values.name}`;
 			tg.sendData(message);
 			tg.close();

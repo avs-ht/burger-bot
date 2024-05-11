@@ -34,9 +34,10 @@ export const Information = () => {
 		});
 		tg.MainButton.onClick(async () => {
 			handleSubmit(() => {})();
-			if (!Object.values(errors).filter(Boolean).length) return;
-
 			const values = getValues();
+			const isEmpty = !values.tableNumber;
+			if (isEmpty) return;
+
 			const dishes = Object.entries(cart).map(
 				([key, value]) =>
 					`${menuPositions.find(pos => pos.id === key)?.title} - x${Number(value)} ${+(menuPositions.find(pos => pos.id === key)?.price || 0) * value} ₽`,
