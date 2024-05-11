@@ -39,7 +39,7 @@ export const keyBoard = () => {
     keyboard: [
       [
         {
-          text: "T Забронировать столик",
+          text: "🍽 Забронировать столик",
           web_app: { url: `${WEB_APP_URL}book` },
         },
       ],

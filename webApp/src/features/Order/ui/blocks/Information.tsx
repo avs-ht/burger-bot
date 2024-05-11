@@ -34,7 +34,7 @@ export const Information = () => {
 		});
 		tg.MainButton.onClick(async () => {
 			handleSubmit(() => {})();
-			if (Object.values(errors).filter(Boolean).length) return;
+			if (!Object.values(errors).filter(Boolean).length) return;
 
 			const values = getValues();
 			const dishes = Object.entries(cart).map(
