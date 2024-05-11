@@ -34,15 +34,14 @@ export const Information = () => {
 		});
 		tg.MainButton.onClick(async () => {
 			handleSubmit(() => {})();
-			const values = getValues();
-			const isEmpty = !values.tableNumber;
-			if (isEmpty) return;
+			const { tableNumber, commentary } = getValues();
+			if (tableNumber === '') return;
 
 			const dishes = Object.entries(cart).map(
 				([key, value]) =>
 					`${menuPositions.find(pos => pos.id === key)?.title} - x${Number(value)} ${+(menuPositions.find(pos => pos.id === key)?.price || 0) * value} ₽`,
 			);
-			const message = `Заказ:\nНомер стола: ${values.tableNumber}\nКомментарий: ${values.commentary}\nБлюда:\n${dishes.join(
+			const message = `Заказ:\nНомер стола: ${tableNumber}\nКомментарий: ${commentary}\nБлюда:\n${dishes.join(
 				'\n',
 			)} \nИтого: ${price} ₽`;
 			tg.sendData(message);
