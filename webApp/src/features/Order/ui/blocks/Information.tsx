@@ -18,13 +18,7 @@ export const Information = () => {
 	const { tg } = useTg();
 	const cart = useCartStore(state => state.cart);
 	const price = useCartStore(state => state.price);
-	const {
-		handleSubmit,
-		getValues,
-		clearErrors,
-		formState: { errors },
-		register,
-	} = useForm<FormType>({
+	const { handleSubmit, getValues, register } = useForm<FormType>({
 		resolver: zodResolver(FormSchema),
 	});
 
@@ -47,7 +41,7 @@ export const Information = () => {
 			tg.sendData(message);
 			tg.close();
 		});
-	}, [cart, errors, getValues, handleSubmit, price, tg]);
+	}, [cart, getValues, handleSubmit, price, tg]);
 
 	return (
 		<form className="flex flex-col gap-2">
@@ -56,15 +50,13 @@ export const Information = () => {
 				labelAsPlaceholder
 				type="number"
 				register={register('tableNumber')}
-				clearError={() => clearErrors('tableNumber')}
-				errorText={errors.tableNumber?.message}
+				required
 			/>
 			<Input
 				label="Ваш комментарий: например, приборы на 3х человек"
 				labelAsPlaceholder
 				register={register('commentary')}
-				clearError={() => clearErrors('commentary')}
-				errorText={errors.commentary?.message}
+				required
 			/>
 		</form>
 	);

@@ -43,14 +43,7 @@ export const BookTable = () => {
 	});
 	tg.MainButton.show();
 
-	const {
-		register,
-		clearErrors: clearError,
-		handleSubmit,
-		formState: { errors },
-		getValues,
-		setError,
-	} = useForm<FormType>({
+	const { register, handleSubmit, getValues, setError } = useForm<FormType>({
 		resolver: zodResolver(FormSchema),
 	});
 
@@ -64,21 +57,18 @@ export const BookTable = () => {
 			tg.sendData(message);
 			tg.close();
 		});
-	}, [errors, tg, tg.MainButton, handleSubmit, getValues]);
+	}, [tg, tg.MainButton, handleSubmit, getValues]);
 
 	return (
 		<form className="flex flex-col gap-3 pb-7">
 			<Input
 				label="Время визита"
 				register={register('visitTime')}
-				clearError={() => clearError('visitTime')}
-				errorText={errors.visitTime?.message}
 				type="time"
+				required
 			/>
 			<Input
 				label="День визита"
-				register={register('visitDate')}
-				clearError={() => clearError('visitDate')}
 				onChange={e => {
 					if (new Date().getTime() >= new Date(e.target.value).getTime()) {
 						setError('visitDate', {
@@ -86,7 +76,7 @@ export const BookTable = () => {
 						});
 					}
 				}}
-				errorText={errors.visitDate?.message}
+				required
 				type="date"
 			/>
 			<div className="mb-6 mt-4 flex flex-col items-center gap-1">
@@ -99,24 +89,9 @@ export const BookTable = () => {
 					alt="Схема зала и расстановка столов"
 				/>
 			</div>
-			<Input
-				label="Номер стола"
-				register={register('tableNumber')}
-				clearError={() => clearError('tableNumber')}
-				errorText={errors.tableNumber?.message}
-			/>
-			<Input
-				label="Номер телефона"
-				register={register('phone')}
-				clearError={() => clearError('phone')}
-				errorText={errors.phone?.message}
-			/>
-			<Input
-				label="Имя"
-				register={register('name')}
-				clearError={() => clearError('name')}
-				errorText={errors.name?.message}
-			/>
+			<Input label="Номер стола" register={register('tableNumber')} required />
+			<Input label="Номер телефона" register={register('phone')} required />
+			<Input label="Имя" register={register('name')} required />
 		</form>
 	);
 };
