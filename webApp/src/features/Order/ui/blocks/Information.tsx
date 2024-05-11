@@ -18,9 +18,11 @@ export const Information = () => {
 	const { tg } = useTg();
 	const cart = useCartStore(state => state.cart);
 	const price = useCartStore(state => state.price);
-	const { handleSubmit, getValues, register } = useForm<FormType>({
+	const { handleSubmit, getValues, register, watch } = useForm<FormType>({
 		resolver: zodResolver(FormSchema),
 	});
+
+	const { tableNumber, commentary } = watch();
 
 	useEffect(() => {
 		tg.MainButton.setParams({
@@ -28,7 +30,6 @@ export const Information = () => {
 		});
 		tg.MainButton.onClick(async () => {
 			handleSubmit(() => {})();
-			const { tableNumber, commentary } = getValues();
 			if (tableNumber === '') return;
 
 			const dishes = Object.entries(cart).map(
@@ -41,7 +42,7 @@ export const Information = () => {
 			tg.sendData(message);
 			tg.close();
 		});
-	}, [cart, getValues, handleSubmit, price, tg]);
+	}, [cart, getValues, handleSubmit, price, tg, tableNumber, commentary]);
 
 	return (
 		<form className="flex flex-col gap-2">
