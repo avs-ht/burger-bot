@@ -32,6 +32,15 @@ export default db.define(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    username: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    isBanned: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+      allowNull: true,
+    },
   },
   { timestamps: true, updatedAt: false }
 );

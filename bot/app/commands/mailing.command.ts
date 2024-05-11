@@ -4,8 +4,12 @@ import { changeAdminState } from "../sequelize/changeAdminState.sequelize";
 import { getAdminState } from "../sequelize/getAdminState.sequelize";
 import { getAllUsers } from "../sequelize/getAllUsers.sequelize";
 import { getUserStatus } from "../sequelize/getUserStatus.sequelize";
+import { getBanned } from "../sequelize/getBanned.sequelize";
 bot.onText(/\/mailing/, async (msg: any) => {
   const chatId = String(msg.chat.id);
+  const banned = await getBanned(chatId);
+
+  if (banned) return;
   const status = await getUserStatus(chatId);
   if (status !== "admin" && status !== "owner") return;
 
@@ -18,6 +22,9 @@ bot.onText(/\/mailing/, async (msg: any) => {
 
 bot.onText(/\/cancelMailing/, async (msg: any) => {
   const chatId = String(msg.chat.id);
+  const banned = await getBanned(chatId);
+
+  if (banned) return;
   const status = await getUserStatus(chatId);
   if (status !== "admin" && status !== "owner") return;
 
@@ -28,6 +35,9 @@ bot.onText(/\/cancelMailing/, async (msg: any) => {
 bot.on("message", async (msg: any) => {
   if (msg.text === "/cancelMailing" || msg.text === "/mailing") return;
   const chatId = String(msg.chat.id);
+  const banned = await getBanned(chatId);
+
+  if (banned) return;
   const status = await getUserStatus(chatId);
   if (status !== "admin" && status !== "owner") return;
 
@@ -43,7 +53,7 @@ bot.on("message", async (msg: any) => {
   await changeAdminState(chatId, "off");
   for (const user of users) {
     try {
-      await bot.copyMessage(user as ChatId, chatId, msg.message_id);
+      await bot.copyMessage(user.id as ChatId, chatId, msg.message_id);
     } catch (error) {
       bot.sendMessage(chatId, `Произошла ошибка при рассылке`);
       console.log(error);

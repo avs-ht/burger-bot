@@ -1,11 +1,15 @@
 import bot from "../connections/bot.connection";
 import { changeAdminState } from "../sequelize/changeAdminState.sequelize";
 import { getAdminState } from "../sequelize/getAdminState.sequelize";
+import { getBanned } from "../sequelize/getBanned.sequelize";
 import { getUserStatus } from "../sequelize/getUserStatus.sequelize";
 import { updateUserStatus } from "../sequelize/updateUserStatus.sequerlize";
 
 bot.onText(/\/deleteAdmin/, async (msg: any) => {
   const chatId = String(msg.chat.id);
+  const banned = await getBanned(chatId);
+
+  if (banned) return;
   const userStatus = await getUserStatus(chatId);
   if (userStatus !== "owner") return;
 
@@ -18,6 +22,9 @@ bot.onText(/\/deleteAdmin/, async (msg: any) => {
 
 bot.onText(/\/cancelDeleteAdmin/, async (msg: any) => {
   const chatId = String(msg.chat.id);
+  const banned = await getBanned(chatId);
+
+  if (banned) return;
   const userStatus = await getUserStatus(chatId);
   if (userStatus !== "owner") return;
 

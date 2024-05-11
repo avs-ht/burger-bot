@@ -1,11 +1,16 @@
 import bot from "../connections/bot.connection";
+
 import { changeAdminState } from "../sequelize/changeAdminState.sequelize";
 import { getAdminState } from "../sequelize/getAdminState.sequelize";
+import { getBanned } from "../sequelize/getBanned.sequelize";
 import { getUserStatus } from "../sequelize/getUserStatus.sequelize";
 import { updateUserStatus } from "../sequelize/updateUserStatus.sequerlize";
 
 bot.onText(/\/newAdmin/, async (msg: any) => {
   const chatId = String(msg.chat.id);
+  const banned = await getBanned(chatId);
+
+  if (banned) return;
   const userStatus = await getUserStatus(chatId);
   if (userStatus !== "owner") return;
 
@@ -18,6 +23,9 @@ bot.onText(/\/newAdmin/, async (msg: any) => {
 
 bot.onText(/\/cancelNewAdmin/, async (msg: any) => {
   const chatId = String(msg.chat.id);
+  const banned = await getBanned(chatId);
+
+  if (banned) return;
   const userStatus = await getUserStatus(chatId);
   if (userStatus !== "owner") return;
 
@@ -28,6 +36,9 @@ bot.onText(/\/cancelNewAdmin/, async (msg: any) => {
 bot.on("message", async (msg: any) => {
   if (msg.text === "/cancelNewAdmin" || msg.text === "/newAdmin") return;
   const chatId = String(msg.chat.id);
+  const banned = await getBanned(chatId);
+
+  if (banned) return;
   const userStatus = await getUserStatus(chatId);
   if (userStatus !== "owner") return;
 

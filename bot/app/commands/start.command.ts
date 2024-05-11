@@ -2,13 +2,19 @@ import replyMarkup, { keyBoard } from "../replyMarkup";
 import bot from "../connections/bot.connection";
 import { saveUser } from "../sequelize/saveUser.sequelize";
 import { getUserInvitesAmount } from "../sequelize/getUserInvites.sequelize";
+import { getBanned } from "../sequelize/getBanned.sequelize";
+import { getUserStatus } from "../sequelize/getUserStatus.sequelize";
 
 const handleStartCommand = async (msg) => {
   const name = msg.from?.first_name || msg.from?.username || "гость";
+  const username = msg.from?.username || "";
   const chatId = String(msg.chat.id);
+  const banned = await getBanned(chatId);
+
+  if (banned) return;
   const invitedBy = msg.text.split(" ")[1];
   try {
-    const answer = await saveUser(chatId, invitedBy || "");
+    const answer = await saveUser(chatId, invitedBy || "", username);
 
     const invitedUsers = await getUserInvitesAmount(chatId);
 
@@ -20,9 +26,42 @@ const handleStartCommand = async (msg) => {
       }
     );
 
+    const status = await getUserStatus(chatId);
     bot.sendMessage(chatId, `Либо же нажми на появившиеся кнопки снизу!`, {
       reply_markup: keyBoard(),
     });
+    // if (status === "admin") {
+    //   bot.setMyCommands(
+    //     [
+    //       { command: "/mailing", description: "Рассылка" },
+    //       { command: "/amount", description: "Количество приглашенных" },
+    //       { command: "/ban {id}", description: "Забанить пользователя" },
+    //     ],
+    //     {
+    //       scope: {
+    //         type: "chat",
+    //         chat_id: chatId,
+    //       },
+    //     }
+    //   );
+    // } else if (status === "owner") {
+    //   bot.setMyCommands(
+    //     [
+    //       { command: "/mailing", description: "Рассылка" },
+    //       { command: "/amount", description: "Количество приглашенных" },
+    //       { command: "/ban {id}", description: "Забанить пользователя" },
+    //       { command: "/newAdmin", description: "Добавить админа" },
+    //       { command: "/deleteAdmin", description: "Удалить админа" },
+    //       { command: "/getAdmins", description: "Получить список админов" },
+    //     ],
+    //     {
+    //       scope: {
+    //         type: "chat",
+    //         chat_id: chatId,
+    //       },
+    //     }
+    //   );
+    // }
 
     if (!answer.invitedBy) return;
 

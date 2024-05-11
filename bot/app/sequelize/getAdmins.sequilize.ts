@@ -8,5 +8,9 @@ export const getAdmins = async () => {
       privileged: "admin",
     },
   });
-  return admins.map((user) => user.get("login"));
+  const adminsObjects = admins.map(async (user) => ({
+    id: await user.get("login"),
+    username: `@${await user.get("username")}`,
+  }));
+  return await Promise.all(adminsObjects);
 };
