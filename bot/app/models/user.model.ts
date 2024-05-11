@@ -17,6 +17,7 @@ export default db.define(
     },
     privileged: {
       type: DataTypes.STRING,
+      defaultValue: "user",
       allowNull: true,
     },
     invitedUsers: {
@@ -32,5 +33,5 @@ export default db.define(
       allowNull: true,
     },
   },
-  { timestamps: true, updatedAt: true }
+  { timestamps: true, updatedAt: false }
 );
